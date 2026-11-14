@@ -1,7 +1,7 @@
 <p align="center">
-  <h1 align="center">Claude Code Game Studios</h1>
+  <h1 align="center">Code Game Studios</h1>
   <p align="center">
-    Describe a game. Claude Code asks a few questions, writes a one-page brief,
+    Describe a game. Code asks a few questions, writes a one-page brief,
     and builds a playable browser game from it.
     <br />
     Then you change it, grow it and finish it, one step at a time.
@@ -9,17 +9,13 @@
 </p>
 
 <p align="center">
-  <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="MIT License"></a>
-  <a href="https://code.claude.com/docs"><img src="https://img.shields.io/badge/built%20for-Claude%20Code-f5f5f5?logo=anthropic" alt="Built for Claude Code"></a>
-  <a href="https://www.buymeacoffee.com/donchitos3"><img src="https://img.shields.io/badge/Buy%20Me%20a%20Coffee-Support%20this%20project-FFDD00?logo=buymeacoffee&logoColor=black" alt="Buy Me a Coffee"></a>
-  <a href="https://github.com/sponsors/Donchitos"><img src="https://img.shields.io/badge/GitHub%20Sponsors-Support%20this%20project-ea4aaa?logo=githubsponsors&logoColor=white" alt="GitHub Sponsors"></a>
 </p>
 
 ---
 
 ## Make me a game
 
-Open Claude Code in a copy of this repository and say what you want:
+Open Code in a copy of this repository and say what you want:
 
 ```
 /prototype a fishing game where the rare fish only bite at dusk
@@ -106,7 +102,7 @@ clutter, not evidence.
 ### Prerequisites
 
 - [Git](https://git-scm.com/)
-- [Claude Code](https://code.claude.com/docs/en/setup) — the native installer is recommended (`npm install -g @anthropic-ai/claude-code` also works, on Node.js 22+)
+- [Code](https://code.claude.com/docs/en/setup) — the native installer is recommended (`npm install -g @anthropic-ai/claude-code` also works, on Node.js 22+)
 - [Python 3](https://www.python.org/) — reads `project.yaml` for every skill and hook; without it every setting silently falls back to its default
 - Bash — runs every hook; built into macOS and Linux, and on Windows it comes with [Git for Windows](https://git-scm.com/downloads/win). Without it on Windows the hooks skip themselves, and session start says their checks are off
 - **Chrome, Edge or Chromium** — `/prototype` plays and screenshots each game in it; without one, those checks say they were not assessed
@@ -122,7 +118,7 @@ Hooks fail gracefully if optional tools are missing — you just lose validation
    cd my-game
    ```
 
-2. **Open Claude Code in the project's root folder** (the one holding
+2. **Open Code in the project's root folder** (the one holding
    `CLAUDE.md` and `project.yaml`) and start a session:
    ```bash
    claude
@@ -248,7 +244,7 @@ studio-tests/                       # QA for the skills and agents themselves �
 
 ### Testing your customizations
 
-Claude Code Game Studios is a template you are meant to edit. `studio-tests/` is how
+Code Game Studios is a template you are meant to edit. `studio-tests/` is how
 you check that an edited or newly written skill still holds up — a catalog of all
 75 skills and 49 agents, per-category quality rubrics, behavioral specs, and
 templates for writing specs of your own.
@@ -277,7 +273,7 @@ It tests the *framework*, never your game — game tests live in `tests/`.
 | `validate-assets.sh` | PostToolUse (Write/Edit) | Checks data-file JSON under `assets/`, `Assets/` or `Content/`, and asset naming in Godot's `assets/` only — exits early if the file is under none of them |
 | `session-start.sh` | Session open | Shows current branch and recent commits for orientation |
 | `detect-gaps.sh` | Session open | Detects fresh projects (suggests `/start`) and missing design docs when code or prototypes exist |
-| `pre-compact.sh` | Before compaction | Logs the compaction (its output does not reach Claude — `session-start.sh` restores context afterwards) |
+| `pre-compact.sh` | Before compaction | Logs the compaction (its output does not reach — `session-start.sh` restores context afterwards) |
 | `notify.sh` | Permission prompt, or idle about a minute | Shows Windows toast notification via PowerShell |
 | `session-stop.sh` | Every response end, in the background | Archives `active.md` to session log and records git activity |
 | `log-agent.sh` | Agent spawned | Audit trail start — logs subagent invocation |
@@ -287,7 +283,7 @@ It tests the *framework*, never your game — game tests live in `tests/`.
 
 > **Note**: `validate-commit.sh`, `validate-push.sh`, `validate-read.sh`, `validate-write.sh`, `validate-registry.sh`, `validate-assets.sh` and `validate-skill-change.sh` fire on every Bash, PowerShell, Read, Write or Edit tool call and exit immediately (exit 0) when the command or file path is not relevant. This is normal hook behavior — not a performance concern.
 
-**Permission rules** in `settings.json` auto-allow test runs and the framework's read-only helper scripts, and block dangerous operations (force push, `rm -rf`, reading `.env` files) in both the Bash and PowerShell tools. Read-only commands such as `git status`, `git log` and `ls` need no rule: Claude Code runs them without asking. The `git` rules match anywhere after `git`, so a git command whose text only mentions `push` followed later by ` +` or ` -f`, `clean` followed by ` -f`, or `reset` followed by `--hard` — a commit message such as `git commit -m "push + pull"` included — is denied too: reword the message.
+**Permission rules** in `settings.json` auto-allow test runs and the framework's read-only helper scripts, and block dangerous operations (force push, `rm -rf`, reading `.env` files) in both the Bash and PowerShell tools. Read-only commands such as `git status`, `git log` and `ls` need no rule: Code runs them without asking. The `git` rules match anywhere after `git`, so a git command whose text only mentions `push` followed later by ` +` or ` -f`, `clean` followed by ` -f`, or `reset` followed by `--hard` — a commit message such as `git commit -m "push + pull"` included — is denied too: reword the message.
 
 ### Path-Scoped Rules
 
@@ -375,7 +371,7 @@ matches your project (a web project uses the general programmers):
 
 ### Slash Commands
 
-Type `/` in Claude Code to access all 75 skills (plus three old names that point to their new ones):
+Type `/` in Code to access all 75 skills (plus three old names that point to their new ones):
 
 **Make a Game**
 `/prototype` `/cut`
@@ -464,7 +460,7 @@ This is **not** an auto-pilot system. Every agent follows a strict collaboration
 You stay in control. The agents provide structure and expertise, not autonomy.
 
 That is how a terminal session started at the project root behaves out of the
-box. The `guided` and `autonomous` automation settings, and Claude Code's own
+box. The `guided` and `autonomous` automation settings, and Code's own
 auto mode, trade some of these prompts for speed; see
 [setup-requirements.md](.claude/docs/setup-requirements.md) for the routes into
 auto mode.
@@ -496,31 +492,17 @@ This is a **template**, not a locked framework. Everything is meant to be custom
 
 Primary development on **Windows 10** with Git Bash. The hooks and scripts are also tested on **macOS** — its stock bash 3.2 and BSD tools, with and without `jq` — and on **Linux**. All hooks use POSIX-compatible patterns (`grep -E`, not `grep -P`) and include fallbacks for missing tools. The `notify.sh` hook uses PowerShell for Windows toast notifications and is a no-op elsewhere — desktop notifications on macOS/Linux are not yet wired. Please file issues for any platform-specific breakage.
 
-## Community
-
-- **Discussions** — [GitHub Discussions](https://github.com/Donchitos/Claude-Code-Game-Studios/discussions) for questions, ideas, and showcasing what you've built
-- **Issues** — [Bug reports and feature requests](https://github.com/Donchitos/Claude-Code-Game-Studios/issues)
-
----
 
 ## Supporting This Project
 
-Claude Code Game Studios is free and open source. If it saves you time or helps you ship your game, consider supporting continued development:
+Code Game Studios is free and open source. If it saves you time or helps you ship your game, consider supporting continued development:
 
 <p>
-  <a href="https://www.buymeacoffee.com/donchitos3"><img src="https://img.shields.io/badge/Buy%20Me%20a%20Coffee-FFDD00?style=for-the-badge&logo=buy-me-a-coffee&logoColor=black" alt="Buy Me a Coffee"></a>
-  &nbsp;
-  <a href="https://github.com/sponsors/Donchitos"><img src="https://img.shields.io/badge/GitHub%20Sponsors-ea4aaa?style=for-the-badge&logo=githubsponsors&logoColor=white" alt="GitHub Sponsors"></a>
 </p>
 
-- **[Buy Me a Coffee](https://www.buymeacoffee.com/donchitos3)** — one-time support
-- **[GitHub Sponsors](https://github.com/sponsors/Donchitos)** — recurring support through GitHub
-
-Sponsorships help fund time spent maintaining skills, adding new agents, keeping up with Claude Code and engine API changes, and responding to community issues.
+Sponsorships help fund time spent maintaining skills, adding new agents, keeping up with Code and engine API changes, and responding to community issues.
 
 ---
-
-*Built for Claude Code. Maintained and extended — contributions welcome via [GitHub Discussions](https://github.com/Donchitos/Claude-Code-Game-Studios/discussions).*
 
 ## License
 
