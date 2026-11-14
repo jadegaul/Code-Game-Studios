@@ -114,7 +114,7 @@ Hooks fail gracefully if optional tools are missing — you just lose validation
 
 1. **Clone or use as template**:
    ```bash
-   git clone https://github.com/Donchitos/Claude-Code-Game-Studios.git my-game
+   git clone https://github.com/jadegaul/Code-Game-Studios.git my-game
    cd my-game
    ```
 
